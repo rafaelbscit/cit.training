@@ -2,11 +2,13 @@ package br.com.cit.contacts.model;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 public class Mail extends Entity {
 
     private Long id;
     private String mail;
+    private Contact contact;
 
     public Mail() {
     }
@@ -14,6 +16,15 @@ public class Mail extends Entity {
     public Mail(Long id, String mail) {
         this.id = id;
         this.mail = mail;
+    }
+
+    @Ignore
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public Long getId() {
@@ -41,6 +52,12 @@ public class Mail extends Entity {
         this.mail = mail;
         return this;
     }
+
+    public Mail withContact(final Contact contact) {
+        this.contact = contact;
+        return this;
+    }
+
 
     @Override
     public boolean equals(Object o) {

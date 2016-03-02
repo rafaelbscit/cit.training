@@ -13,7 +13,7 @@ jar {
     baseName = 'contacts'
     version =  '0.1.0'
     manifest {
-        attributes "Main-Class": "br.com.cit.contacts.view.config.Application"
+        attributes "Main-Class": "br.com.cit.contacts.view.config.AppConfig"
     }
 }
 

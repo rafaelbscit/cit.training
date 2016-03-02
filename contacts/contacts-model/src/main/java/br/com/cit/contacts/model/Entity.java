@@ -50,4 +50,10 @@ public abstract class Entity {
         return this;
     }
 
+    public void initEntity() {
+        createdAt = new Date();
+        updatedAt = createdAt;
+        version = EntityConstant.DEFAULT_VERSION;
+    }
+
 }

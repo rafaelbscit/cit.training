@@ -2,6 +2,8 @@ dependencies {
     compile project(':contacts-model')
 
     compile 'org.mybatis:mybatis:3.3.1'
+    compile 'org.mybatis:mybatis-spring:1.2.4'
+    compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
     compile 'mysql:mysql-connector-java:5.1.38'
 
 }

@@ -3,14 +3,14 @@ package br.com.cit.contacts.model;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Contact extends Entity {
 
     private Long id;
     private String name;
-    private Set<Mail> mails;
+    private List<Mail> mails;
 
     public Contact() {
     }
@@ -20,7 +20,7 @@ public class Contact extends Entity {
         this.name = name;
     }
 
-    public Contact(Long id, String name, Set<Mail> mails) {
+    public Contact(Long id, String name, List<Mail> mails) {
         this.id = id;
         this.name = name;
         this.mails = mails;
@@ -34,11 +34,11 @@ public class Contact extends Entity {
         this.id = id;
     }
 
-    public Set<Mail> getMails() {
+    public List<Mail> getMails() {
         return mails;
     }
 
-    public void setMails(Set<Mail> mails) {
+    public void setMails(List<Mail> mails) {
         this.mails = mails;
     }
 
@@ -60,14 +60,14 @@ public class Contact extends Entity {
         return this;
     }
 
-    public Contact withMails(final Set<Mail> mails) {
+    public Contact withMails(final List<Mail> mails) {
         this.mails = mails;
         return this;
     }
 
     public Boolean addMail(Mail mail) {
         if (mails == null) {
-            mails = new HashSet<Mail>();
+            mails = new ArrayList<Mail>();
         }
 
         return mails.add(mail);
