@@ -1,0 +1,24 @@
+###  intellij
+.idea
+# .iml files exclusion is unnecessary in intellij 16+ versions, since it was moved to the idea directory.
+*.iml
+
+### gradle
+.gradle
+build
+
+### dolphin - KDE file manager
+.directory
+
+### eclipse
+target/
+bin/
+.settings/
+.project
+.classpath
+
+### Ignore generated files commcenter-api-spec
+commcenter-api-spec/src/main/java
+
+### Ignore path log
+log/

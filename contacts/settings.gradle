@@ -1,0 +1,6 @@
+rootProject.name = 'contacts'
+
+include 'contacts-view'
+include 'contacts-api'
+include 'contacts-model'
+

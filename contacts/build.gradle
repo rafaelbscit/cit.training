@@ -1,0 +1,50 @@
+group 'com.cit.training'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://plugins.gradle.org/m2/" }
+}
+
+subprojects {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    apply plugin: 'idea'
+    apply plugin: 'java'
+
+
+    group 'com.cit.training.contacts'
+    version = System.env.BUILD_VERSION != null ? System.env.BUILD_VERSION : '1.0.0-SNAPSHOT'
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+    compileJava.options.encoding = 'UTF-8'
+
+    dependencies {
+
+        // Dependencies commons modules
+        compile 'com.google.guava:guava:18.0'
+        compile 'ch.qos.logback:logback-classic:1.1.5'
+        compile 'org.springframework:spring-webmvc:4.2.5.RELEASE'
+
+
+        // Dependencies Unit Tests
+        testCompile 'junit:junit:4.12'
+        testCompile 'org.mockito:mockito-all:2.0.2-beta'
+        testCompile 'org.hamcrest:hamcrest-all:1.3'
+    }
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.10"
+}
+

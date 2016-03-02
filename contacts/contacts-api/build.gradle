@@ -1,0 +1,7 @@
+dependencies {
+    compile project(':contacts-model')
+
+    compile 'org.mybatis:mybatis:3.3.1'
+    compile 'mysql:mysql-connector-java:5.1.38'
+
+}
