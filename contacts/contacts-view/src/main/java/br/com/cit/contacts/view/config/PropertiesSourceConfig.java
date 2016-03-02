@@ -10,7 +10,7 @@ import org.springframework.core.io.Resource;
 public class PropertiesSourceConfig {
 
     @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+    public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         PropertySourcesPlaceholderConfigurer props = new PropertySourcesPlaceholderConfigurer();
         props.setLocations(new Resource[] {
                 new ClassPathResource("config.properties")

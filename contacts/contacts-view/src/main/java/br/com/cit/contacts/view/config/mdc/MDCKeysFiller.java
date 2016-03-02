@@ -1,4 +1,4 @@
-package br.com.cit.contacts.view.mdc;
+package br.com.cit.contacts.view.config.mdc;
 
 import ch.qos.logback.classic.ClassicConstants;
 import org.slf4j.Logger;
@@ -7,7 +7,6 @@ import org.slf4j.MDC;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import java.util.UUID;
 
 /**
  * Filler Keys into MDC logger.
@@ -74,8 +73,6 @@ public abstract class MDCKeysFiller {
 
     public static String generateNewUuidMDC() {
         StringBuilder uuid = new StringBuilder();
-        uuid.append(UUID.randomUUID().toString());
-        uuid.append(SEPARATOR_UUID_MDC);
         uuid.append(System.currentTimeMillis());
         return uuid.toString();
     }

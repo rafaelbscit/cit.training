@@ -1,4 +1,4 @@
-package br.com.cit.contacts.view.mdc;
+package br.com.cit.contacts.view.config.mdc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

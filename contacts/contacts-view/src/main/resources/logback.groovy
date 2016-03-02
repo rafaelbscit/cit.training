@@ -11,7 +11,7 @@ def byDay = timestamp("yyyy-MM-dd")
 appender("STDOUT", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
         charset = Charset.forName("UTF-8")
-        pattern = "%d{HH:mm:ss.SSS} %-5level [%X{uuid}] %logger{36} - %msg%n"
+        pattern = "%d{HH:mm:ss.SSS} %-5level [uri:%X{req.requestURI}][method:%X{req.method}][%X{uuid}] %logger{36} - %msg%n"
     }
 }
 appender("FILE", RollingFileAppender) {
