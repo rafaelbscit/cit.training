@@ -4,7 +4,6 @@ import br.com.cit.contacts.model.Contact;
 import br.com.cit.contacts.model.Mail;
 import br.com.cit.contacts.repository.constants.MapperConstant;
 import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public interface MailMapper {
     @Results(value = {
             @Result(property = MAIL_PROPERTY_ID, column = MAIL_COLUMN_ID),
             @Result(property = MAIL_PROPERTY_CONTACT, javaType = Contact.class, column = MAIL_COLUMN_CONTACT_ID,
-                    one = @One(select = CONTACT_MAPPER_FIND_BY_ID, fetchType = FetchType.LAZY)),
+                    one = @One(select = CONTACT_MAPPER_FIND_BY_ID)),
     })
     List<Mail> findAll();
 
