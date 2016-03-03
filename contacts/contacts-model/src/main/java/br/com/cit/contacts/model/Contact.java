@@ -1,5 +1,6 @@
 package br.com.cit.contacts.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
@@ -9,7 +10,10 @@ import java.util.List;
 public class Contact extends Entity {
 
     private Long id;
+
     private String name;
+
+    @JsonManagedReference
     private List<Mail> mails;
 
     public Contact() {

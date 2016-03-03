@@ -1,6 +1,7 @@
 package br.com.cit.contacts.repository.mapper;
 
 import br.com.cit.contacts.model.Contact;
+import br.com.cit.contacts.repository.constants.MapperConstant;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
@@ -34,6 +35,8 @@ public interface ContactMapper {
     List<Contact> findById(Long id);
 
     @Insert(INSERT_CONTACT)
+    @SelectKey(before = false, keyProperty = CONTACT_PROPERTY_ID, keyColumn = CONTACT_COLUMN_ID,
+            statement = MapperConstant.LAST_INSERT_ID, resultType = Long.class)
     void insert(Contact contact);
 
 }

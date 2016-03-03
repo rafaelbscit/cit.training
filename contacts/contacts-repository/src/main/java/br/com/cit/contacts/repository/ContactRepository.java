@@ -1,6 +1,7 @@
 package br.com.cit.contacts.repository;
 
 import br.com.cit.contacts.model.Contact;
+import br.com.cit.contacts.model.Mail;
 import br.com.cit.contacts.repository.exception.RepositoryException;
 import br.com.cit.contacts.repository.mapper.ContactMapper;
 import br.com.cit.contacts.repository.mapper.MailMapper;
@@ -40,6 +41,13 @@ public class ContactRepository {
 
             contact.initEntity();
             contactMapper.insert(contact);
+
+            if (contact.getMails() != null) {
+                for (Mail mail : contact.getMails()) {
+                    mail.setContact(contact);
+                    mailMapper.insert(mail);
+                }
+            }
 
         } catch (Exception e) {
             LOGGER.error(e.getLocalizedMessage(), Throwables.getRootCause(e));

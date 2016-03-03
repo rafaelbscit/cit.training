@@ -4,24 +4,24 @@ import com.google.common.base.MoreObjects;
 
 public class ResponseEntity {
 
-    private final int value;
+    private final int status;
     private final String reasonPhrase;
     private final Object response;
 
-    public ResponseEntity(int value, String reasonPhrase, Object response) {
-        this.value = value;
+    public ResponseEntity(int status, String reasonPhrase, Object response) {
+        this.status = status;
         this.reasonPhrase = reasonPhrase;
         this.response = response;
     }
 
-    public ResponseEntity(int value, String reasonPhrase) {
-        this.value = value;
+    public ResponseEntity(int status, String reasonPhrase) {
+        this.status = status;
         this.reasonPhrase = reasonPhrase;
         this.response = null;
     }
 
-    public int getValue() {
-        return value;
+    public int getStatus() {
+        return status;
     }
 
     public String getReasonPhrase() {
@@ -35,7 +35,7 @@ public class ResponseEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("value", value)
+                .add("status", status)
                 .add("reasonPhrase", reasonPhrase)
                 .add("response", response)
                 .toString();

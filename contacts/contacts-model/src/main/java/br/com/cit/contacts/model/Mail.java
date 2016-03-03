@@ -1,5 +1,6 @@
 package br.com.cit.contacts.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import jdk.nashorn.internal.ir.annotations.Ignore;
@@ -7,7 +8,11 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 public class Mail extends Entity {
 
     private Long id;
+
     private String mail;
+
+    @JsonBackReference
+    @Ignore
     private Contact contact;
 
     public Mail() {
