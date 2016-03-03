@@ -2,4 +2,7 @@ dependencies {
     compile project(':contacts-model')
     compile project(':contacts-repository')
 
+    compile 'io.springfox:springfox-swagger-ui:2.4.0'
+    compile 'io.springfox:springfox-swagger2:2.4.0'
+
 }

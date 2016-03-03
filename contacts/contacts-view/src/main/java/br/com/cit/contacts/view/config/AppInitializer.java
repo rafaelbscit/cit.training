@@ -1,7 +1,7 @@
 package br.com.cit.contacts.view.config;
 
 import br.com.cit.contacts.api.config.ApiConfig;
-import br.com.cit.contacts.repository.config.DataConfig;
+import br.com.cit.contacts.repository.config.DatabaseConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.ViewResolver;
@@ -14,7 +14,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{DataConfig.class, ApiConfig.class, ViewResolver.class};
+        return new Class<?>[]{DatabaseConfig.class, ApiConfig.class, ViewResolver.class};
     }
 
     @Override

@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface ContactMapper {
 
-
     String SELECT_CONTACT = "SELECT * FROM CONTACT";
     String SELECT_CONTACT_BY_ID = "SELECT * FROM CONTACT WHERE ID =#{id}";
     String INSERT_CONTACT = "INSERT INTO CONTACT(NAME, CREATED_AT, UPDATED_AT, VERSION) VALUES(#{name}, #{createdAt}, #{updatedAt}, #{version})";
@@ -22,7 +21,7 @@ public interface ContactMapper {
     @Results(value = {
             @Result(property = CONTACT_PROPERTY_ID, column = CONTACT_COLUMN_ID),
             @Result(property = CONTACT_PROPERTY_MAILS, javaType = List.class, column = CONTACT_COLUMN_ID,
-                    many = @Many(select = MAIL_MAPPER_FIND_BY_CONTACT, fetchType = FetchType.EAGER)),
+                    many = @Many(select = MAIL_MAPPER_FIND_BY_CONTACT, fetchType = FetchType.LAZY)),
     })
     List<Contact> findAll();
 
@@ -30,7 +29,7 @@ public interface ContactMapper {
     @Results(value = {
             @Result(property = CONTACT_PROPERTY_ID, column = CONTACT_COLUMN_ID),
             @Result(property = CONTACT_PROPERTY_MAILS, javaType = List.class, column = CONTACT_COLUMN_ID,
-                    many = @Many(select = MAIL_MAPPER_FIND_BY_CONTACT, fetchType = FetchType.EAGER)),
+                    many = @Many(select = MAIL_MAPPER_FIND_BY_CONTACT, fetchType = FetchType.LAZY)),
     })
     List<Contact> findById(Long id);
 

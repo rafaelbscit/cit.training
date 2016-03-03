@@ -4,6 +4,7 @@ import br.com.cit.contacts.api.constants.RestControllerConstant;
 import br.com.cit.contacts.api.service.ContactService;
 import br.com.cit.contacts.model.Contact;
 import br.com.cit.contacts.model.response.ResponseEntity;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class ContactController {
     @Autowired
     private ContactService contactService;
 
+    @ApiOperation("getAll")
     @RequestMapping(value = "/", method = RequestMethod.GET,
             produces = RestControllerConstant.PRODUCES)
     @ResponseBody
@@ -37,6 +39,7 @@ public class ContactController {
         return new ResponseEntity(status.value(), status.getReasonPhrase(), contacts);
     }
 
+    @ApiOperation("addNewContact")
     @RequestMapping(value = "/", method = RequestMethod.POST,
             produces = RestControllerConstant.PRODUCES,
             consumes = RestControllerConstant.CONSUMES)
