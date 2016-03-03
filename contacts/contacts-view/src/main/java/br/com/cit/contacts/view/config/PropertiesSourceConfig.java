@@ -12,7 +12,7 @@ public class PropertiesSourceConfig {
     @Bean
     public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         PropertySourcesPlaceholderConfigurer props = new PropertySourcesPlaceholderConfigurer();
-        props.setLocations(new Resource[] {
+        props.setLocations(new Resource[]{
                 new ClassPathResource("config.properties")
         });
 

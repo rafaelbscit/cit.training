@@ -1,4 +1,4 @@
-package br.com.cit.contacts.api.config;
+package br.com.cit.contacts.repository.config;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -7,13 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan("br.com.cit.contacts.api.mapper")
-@ComponentScan("br.com.cit.contacts.api.repository")
+@MapperScan("br.com.cit.contacts.repository.mapper")
+@ComponentScan("br.com.cit.contacts.repository")
 public class DataConfig {
 
     @Bean

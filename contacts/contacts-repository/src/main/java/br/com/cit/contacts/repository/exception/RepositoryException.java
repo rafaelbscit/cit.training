@@ -1,4 +1,4 @@
-package br.com.cit.contacts.api.exception;
+package br.com.cit.contacts.repository.exception;
 
 public class RepositoryException extends Exception {
 

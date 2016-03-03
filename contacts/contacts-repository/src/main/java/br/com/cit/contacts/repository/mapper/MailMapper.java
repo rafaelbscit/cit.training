@@ -1,4 +1,4 @@
-package br.com.cit.contacts.api.mapper;
+package br.com.cit.contacts.repository.mapper;
 
 import br.com.cit.contacts.model.Mail;
 import org.apache.ibatis.annotations.Insert;

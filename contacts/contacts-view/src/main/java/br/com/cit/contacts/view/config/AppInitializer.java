@@ -1,7 +1,7 @@
 package br.com.cit.contacts.view.config;
 
 import br.com.cit.contacts.api.config.ApiConfig;
-import br.com.cit.contacts.api.config.DataConfig;
+import br.com.cit.contacts.repository.config.DataConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.ViewResolver;

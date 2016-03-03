@@ -11,7 +11,7 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'contacts'
-    version =  '0.1.0'
+    version = '0.1.0'
     manifest {
         attributes "Main-Class": "br.com.cit.contacts.view.config.AppConfig"
     }
@@ -19,6 +19,7 @@ jar {
 
 dependencies {
     compile project(':contacts-api')
+    compile project(':contacts-repository')
     compile project(':contacts-model')
 
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")

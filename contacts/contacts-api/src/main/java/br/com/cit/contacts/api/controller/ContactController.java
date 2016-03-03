@@ -1,14 +1,14 @@
 package br.com.cit.contacts.api.controller;
 
+import br.com.cit.contacts.api.constants.RestControllerConstant;
 import br.com.cit.contacts.api.service.ContactService;
 import br.com.cit.contacts.model.Contact;
+import br.com.cit.contacts.model.response.ResponseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,14 +22,30 @@ public class ContactController {
     private ContactService contactService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET,
-            produces = "application/json")
+            produces = RestControllerConstant.PRODUCES)
     @ResponseBody
-    public List<Contact> getAll() {
+    public ResponseEntity getAll() {
         LOGGER.info("Retrieve all contacts!");
         List<Contact> contacts = contactService.findAll();
 
         LOGGER.info("Found {} contacts!", contacts.size());
-        return contacts;
+
+        HttpStatus status = HttpStatus.OK;
+        return new ResponseEntity(status.value(), status.getReasonPhrase(), contacts);
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST,
+            produces = RestControllerConstant.PRODUCES,
+            consumes = RestControllerConstant.CONSUMES)
+    @ResponseBody
+    public ResponseEntity addNewContact(@RequestBody Contact contact) {
+        LOGGER.info("Add new contact: [{}]!", contact);
+        Contact newContact = contactService.insert(contact);
+
+        LOGGER.info("Contact added with id[{}]!", contact.getId());
+
+        HttpStatus status = HttpStatus.OK;
+        return new ResponseEntity(status.value(), status.getReasonPhrase(), newContact);
     }
 
 }

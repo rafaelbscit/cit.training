@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"br.com.cit.contacts.api.controller",
-        "br.com.cit.contacts.api.service"})
+@ComponentScan({"br.com.cit.contacts.api"})
 public class ApiConfig {
 }

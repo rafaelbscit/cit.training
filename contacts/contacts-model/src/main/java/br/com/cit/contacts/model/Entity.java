@@ -6,11 +6,11 @@ import java.util.Date;
 
 public abstract class Entity {
 
-    public abstract Object getPk();
-
     private Date createdAt;
     private Date updatedAt;
     private Long version;
+
+    public abstract Object getPk();
 
     public Date getCreatedAt() {
         if (createdAt == null) {
