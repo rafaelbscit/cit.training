@@ -37,9 +37,8 @@ public class ContactService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Contact insert(Contact contact) throws ServiceException {
+        contactValidation.validate(contact);
         try {
-            contactValidation.validate(contact);
-
             contactRepository.insert(contact);
             return contact;
         } catch (RepositoryException e) {

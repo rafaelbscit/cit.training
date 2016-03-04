@@ -22,12 +22,19 @@ public interface MailMapper {
     @Select(SELECT_MAILS)
     @Results(value = {
             @Result(property = MAIL_PROPERTY_ID, column = MAIL_COLUMN_ID),
+            @Result(property = MapperConstant.ENTITY_PROPERTY_CREATED_AT, column = MapperConstant.ENTITY_COLUMN_CREATED_AT),
+            @Result(property = MapperConstant.ENTITY_PROPERTY_UPDATED_AT, column = MapperConstant.ENTITY_COLUMN_UPDATED_AT),
             @Result(property = MAIL_PROPERTY_CONTACT, javaType = Contact.class, column = MAIL_COLUMN_CONTACT_ID,
                     one = @One(select = CONTACT_MAPPER_FIND_BY_ID)),
     })
     List<Mail> findAll();
 
     @Select(SELECT_MAILS_BY_CONTACT)
+    @Results(value = {
+            @Result(property = MAIL_PROPERTY_ID, column = MAIL_COLUMN_ID),
+            @Result(property = MapperConstant.ENTITY_PROPERTY_CREATED_AT, column = MapperConstant.ENTITY_COLUMN_CREATED_AT),
+            @Result(property = MapperConstant.ENTITY_PROPERTY_UPDATED_AT, column = MapperConstant.ENTITY_COLUMN_UPDATED_AT),
+    })
     List<Mail> findByContact(Long id);
 
     @Insert(INSERT_MAIL)

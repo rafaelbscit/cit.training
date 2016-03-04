@@ -8,11 +8,15 @@ import br.com.cit.contacts.repository.mapper.MailMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@CacheConfig(cacheNames = {"contacts:ContactRepository"})
 @Repository
 public class ContactRepository {
 
@@ -24,11 +28,13 @@ public class ContactRepository {
     @Autowired
     private MailMapper mailMapper;
 
+    @Cacheable
     public List<Contact> findAll() throws RepositoryException {
         LOGGER.info("Find all contacts!");
         return contactMapper.findAll();
     }
 
+    @CacheEvict(allEntries = true)
     public void insert(Contact contact) throws RepositoryException {
         try {
             LOGGER.info("Insert new contact [{}]!", contact);

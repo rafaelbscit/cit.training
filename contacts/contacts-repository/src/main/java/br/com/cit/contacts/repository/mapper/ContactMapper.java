@@ -19,6 +19,8 @@ public interface ContactMapper {
     @Select(SELECT_CONTACT)
     @Results(value = {
             @Result(property = CONTACT_PROPERTY_ID, column = CONTACT_COLUMN_ID),
+            @Result(property = MapperConstant.ENTITY_PROPERTY_CREATED_AT, column = MapperConstant.ENTITY_COLUMN_CREATED_AT),
+            @Result(property = MapperConstant.ENTITY_PROPERTY_UPDATED_AT, column = MapperConstant.ENTITY_COLUMN_UPDATED_AT),
             @Result(property = CONTACT_PROPERTY_MAILS, javaType = List.class, column = CONTACT_COLUMN_ID,
                     many = @Many(select = MAIL_MAPPER_FIND_BY_CONTACT)),
     })
@@ -27,6 +29,8 @@ public interface ContactMapper {
     @Select(SELECT_CONTACT_BY_ID)
     @Results(value = {
             @Result(property = CONTACT_PROPERTY_ID, column = CONTACT_COLUMN_ID),
+            @Result(property = MapperConstant.ENTITY_PROPERTY_CREATED_AT, column = MapperConstant.ENTITY_COLUMN_CREATED_AT),
+            @Result(property = MapperConstant.ENTITY_PROPERTY_UPDATED_AT, column = MapperConstant.ENTITY_COLUMN_UPDATED_AT),
             @Result(property = CONTACT_PROPERTY_MAILS, javaType = List.class, column = CONTACT_COLUMN_ID,
                     many = @Many(select = MAIL_MAPPER_FIND_BY_CONTACT)),
     })

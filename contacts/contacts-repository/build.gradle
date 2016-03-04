@@ -5,5 +5,7 @@ dependencies {
     compile 'org.mybatis:mybatis-spring:1.2.4'
     compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
     compile 'mysql:mysql-connector-java:5.1.38'
+    compile 'org.springframework.data:spring-data-redis:1.6.4.RELEASE'
+    compile 'redis.clients:jedis:2.8.0'
 
 }

@@ -16,9 +16,6 @@ public abstract class Entity implements Serializable {
     public abstract Object getPk();
 
     public Date getCreatedAt() {
-        if (createdAt == null) {
-            createdAt = new Date();
-        }
         return createdAt;
     }
 
@@ -27,9 +24,6 @@ public abstract class Entity implements Serializable {
     }
 
     public Long getVersion() {
-        if (version == null) {
-            version = EntityConstant.DEFAULT_VERSION;
-        }
         return version;
     }
 
@@ -38,9 +32,6 @@ public abstract class Entity implements Serializable {
     }
 
     public Date getUpdatedAt() {
-        if (updatedAt == null) {
-            updatedAt = getCreatedAt();
-        }
         return updatedAt;
     }
 

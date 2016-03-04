@@ -39,7 +39,8 @@ public class ContactController extends BaseController {
         LOGGER.info("Retrieve all contacts!");
         List<Contact> contacts = contactService.findAll();
 
-        if (contacts == null || contacts.isEmpty()) {
+        if (contacts == null ||
+                contacts.isEmpty()) {
             LOGGER.info("Not found contacts!");
             return buildResponseErro(HttpStatus.NO_CONTENT);
         }
@@ -66,16 +67,17 @@ public class ContactController extends BaseController {
             LOGGER.info("Contact added with id[{}]!", newContact.getId());
 
             return buildResponseSuccess(newContact, HttpStatus.CREATED);
-        } catch (ValidationException e) {
 
-            Throwable rootCause = Throwables.getRootCause(e);
-            LOGGER.error(e.getLocalizedMessage(), rootCause);
-            return buildResponseErro(rootCause, HttpStatus.BAD_REQUEST);
         } catch (ServiceException e) {
 
             Throwable rootCause = Throwables.getRootCause(e);
             LOGGER.error(e.getLocalizedMessage(), rootCause);
             return buildResponseErro(rootCause, HttpStatus.NOT_MODIFIED);
+        } catch (ValidationException e) {
+
+            Throwable rootCause = Throwables.getRootCause(e);
+            LOGGER.error(e.getLocalizedMessage(), rootCause);
+            return buildResponseErro(rootCause, HttpStatus.BAD_REQUEST);
         }
     }
 
