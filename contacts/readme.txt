@@ -1,3 +1,10 @@
+####################### LOG ######################
+* Criar o seguinte diretório:
+    $-> sudo mkdir /var/log/contacts
+
+* Dar permissão:
+    $-> sudo chmod -R 777 /var/log/contacts
+
 Para executar o docker com o mysql, utilizar os comandos abaixos:
 
 

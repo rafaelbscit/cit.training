@@ -1,5 +1,8 @@
 CREATE USER 'contact' IDENTIFIED BY 'contact';
 
+GRANT ALL ON *.* to contact@localhost IDENTIFIED BY 'contact';
+GRANT ALL ON *.* to contact@'%' IDENTIFIED BY 'contact';
+
 CREATE DATABASE CONTACTSDB;
 
 USE CONTACTSDB;

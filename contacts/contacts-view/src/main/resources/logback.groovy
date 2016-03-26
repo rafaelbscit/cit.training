@@ -15,14 +15,14 @@ appender("STDOUT", ConsoleAppender) {
     }
 }
 appender("FILE", RollingFileAppender) {
-    file = "/var/log/contact/main_${byDay}.log"
+    file = "/var/log/contacts/main_${byDay}.log"
     append = true
     encoder(PatternLayoutEncoder) {
         charset = Charset.forName("UTF-8")
         pattern = "%d{HH:mm:ss.SSS} %-5level [%X{uuid}] %logger{36} - %msg%n"
     }
     rollingPolicy(TimeBasedRollingPolicy) {
-        fileNamePattern = "/var/log/contact/main_%d{yyyy-MM-dd}.%i.log"
+        fileNamePattern = "/var/log/contacts/main_%d{yyyy-MM-dd}.%i.log"
         timeBasedFileNamingAndTriggeringPolicy(SizeAndTimeBasedFNATP) {
             maxFileSize = "10MB"
         }
