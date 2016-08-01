@@ -59,8 +59,7 @@ public class ContactService {
     public Contact insert(Contact contact) throws ServiceException {
         contactValidation.validate(contact);
         try {
-            contactRepository.insert(contact);
-            return contact;
+            return contactRepository.insert(contact);
         } catch (RepositoryException e) {
             LOGGER.error(e.getLocalizedMessage());
             throw new ServiceException(e);
@@ -71,8 +70,7 @@ public class ContactService {
     public Contact update(Contact contact) throws ServiceException {
         contactValidation.validate(contact);
         try {
-            contactRepository.update(contact);
-            return contact;
+            return  contactRepository.update(contact);
         } catch (RepositoryException e) {
             LOGGER.error(e.getLocalizedMessage());
             throw new ServiceException(e);

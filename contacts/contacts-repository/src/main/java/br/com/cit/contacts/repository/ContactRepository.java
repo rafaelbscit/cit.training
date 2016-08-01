@@ -48,7 +48,7 @@ public class ContactRepository {
     }
 
     @CacheEvict(allEntries = true)
-    public void insert(Contact contact) throws RepositoryException {
+    public Contact insert(Contact contact) throws RepositoryException {
         try {
             LOGGER.info("Insert new contact [{}]!", contact);
             contact.initEntity();
@@ -67,28 +67,34 @@ public class ContactRepository {
             LOGGER.error(e.getLocalizedMessage());
             throw new RepositoryException(e);
         }
+
+        return contactMapper.findById(contact.getId());
     }
 
     @CacheEvict(allEntries = true)
-    public void update(Contact contact) throws RepositoryException {
+    public Contact update(Contact contact) throws RepositoryException {
         try {
             LOGGER.info("Update contact [{}]!", contact);
-            contact.updateEntity();
 
             Contact contactFind = contactMapper.findById(contact.getId());
+            LOGGER.info("Find contact by id [{}]!", contactFind);
+
             MergeBeanUtils.merge(contactFind, contact);
+            contactFind.updateEntity();
             contactMapper.update(contactFind);
+            LOGGER.info("Contact updated [{}]!", contactFind);
 
             if (contact.getMails() != null) {
                 for (Mail mail : contact.getMails()) {
 
                     mail.setContact(contact);
                     if (mail.getId() != null) {
-                        mail.updateEntity();
 
                         Mail mailFind = mailMapper.findById(mail.getId());
                         MergeBeanUtils.merge(mailFind, mail);
+                        mailFind.updateEntity();
                         mailMapper.update(mailFind);
+
                     } else {
                         mail.initEntity();
                         mailMapper.insert(mail);
@@ -100,6 +106,8 @@ public class ContactRepository {
             LOGGER.error(e.getLocalizedMessage());
             throw new RepositoryException(e);
         }
+
+        return contactMapper.findById(contact.getId());
     }
 
 }

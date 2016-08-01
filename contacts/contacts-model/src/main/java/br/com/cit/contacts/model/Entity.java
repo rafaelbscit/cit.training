@@ -1,11 +1,10 @@
 package br.com.cit.contacts.model;
 
-import java.io.Serializable;
-import java.util.Date;
-
+import br.com.cit.contacts.model.constant.EntityConstant;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import br.com.cit.contacts.model.constant.EntityConstant;
+import java.io.Serializable;
+import java.util.Date;
 
 @JsonAutoDetect
 public abstract class Entity implements Serializable {
@@ -53,6 +52,9 @@ public abstract class Entity implements Serializable {
 
     public void updateEntity() {
         updatedAt = new Date();
+        if (version == null) {
+            version = EntityConstant.DEFAULT_VERSION;
+        }
         version++;
     }
 
