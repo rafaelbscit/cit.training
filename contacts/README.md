@@ -7,6 +7,9 @@ LINK: https://hub.docker.com/_/mysql/
 * CRIA UM NOVO SERVIDOR DO MYSQL COM BD, USER E SENHA
 	$-> docker run -d -p 3306:3306 --name cit-mysql -e MYSQL_ROOT_PASSWORD=cit@2016 -e MYSQL_DATABASE=test_db -e MYSQL_USER=test -e MYSQL_PASSWORD=test -d mysql:latest
 
+* START O SERVIDOR DO MYSQL
+	$-> docker start cit-mysql
+
 * EXECUTA UM COMANDO DENTRO DO CONTAINER
 	$-> docker exec -i cit-mysql mysql --user=test --password=test
 
@@ -17,12 +20,23 @@ LINK: https://hub.docker.com/_/mysql/
 * ADMINISTRA O BANCO DE DADOS CONTACTSBD
     $-> mysql --user=contact --password=contact --port=3306 --host=0.0.0.0
 
+* MYSQL SHOW DATABASES
+    $-> show databases;
+
+* MYSQL USE DATABASE
+    $-> use <DATABASE_NAME>;
+
+* MYSQL SHOW TABLES
+    $-> show tables;
 
 ####################### IMAGEM REDIS ####################
 LINK: https://hub.docker.com/_/redis/
 
 * CRIA UM NOVO SERVIDOR DO REDIS
 	$-> docker run -p 6379:6379 --name cit-redis -d redis:latest redis-server --appendonly yes
+
+* START O SERVIDOR DO REDIS
+	$-> docker start cit-redis
 
 * EXECUTA UM COMANDO DENTRO DO CONTAINER
 	$-> docker exec -i cit-redis redis-cli INFO

@@ -12,9 +12,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
         "br.com.cit.contacts.api.config",
         "br.com.cit.contacts.view.config",
         "br.com.cit.contacts.repository.config"})
-public class AppConfig {
+public class AppBoot {
 
     public static void main(String[] args) {
-        org.springframework.boot.SpringApplication.run(AppConfig.class, args);
+        org.springframework.boot.SpringApplication.run(AppBoot.class, args);
     }
 }

@@ -13,8 +13,16 @@ jar {
     baseName = 'contacts'
     version = '0.1.0'
     manifest {
-        attributes "Main-Class": "br.com.cit.contacts.view.config.AppConfig"
+        attributes "Main-Class": "br.com.cit.contacts.view.config.AppBoot"
     }
+}
+
+bootRun {
+    addResources = true
+}
+
+bootRepackage {
+    mainClass = "br.com.cit.contacts.view.config.AppBoot"
 }
 
 dependencies {
