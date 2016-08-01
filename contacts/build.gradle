@@ -7,7 +7,6 @@ apply plugin: 'idea'
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url "https://plugins.gradle.org/m2/" }
 }
 
 subprojects {
@@ -15,7 +14,6 @@ subprojects {
     repositories {
         mavenLocal()
         mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     apply plugin: 'idea'
@@ -43,7 +41,7 @@ subprojects {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = "2.10"
+    gradleVersion = "2.12"
 }
 
 
