@@ -1,7 +1,7 @@
 package br.com.cit.contacts.repository.mapper;
 
-import java.util.List;
-
+import br.com.cit.contacts.model.Contact;
+import br.com.cit.contacts.repository.constants.MapperConstant;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Result;
@@ -10,8 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
-import br.com.cit.contacts.model.Contact;
-import br.com.cit.contacts.repository.constants.MapperConstant;
+import java.util.List;
 
 public interface ContactMapper {
 
@@ -65,7 +64,7 @@ public interface ContactMapper {
                                     column = CONTACT_COLUMN_ID,
                                     many = @Many(select = MAIL_MAPPER_FIND_BY_CONTACT)),
     })
-    Contact findByName(String name);
+    List<Contact> findByName(String name);
 
     @Insert(INSERT_CONTACT)
     @SelectKey(before = false,

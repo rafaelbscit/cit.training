@@ -1,4 +1,48 @@
-####################### LOG ######################
+# CONTACTS
+
+Essa é um aplicação backend **Contatos**.
+Foi implementada para estudos do SpringBoot e Padrão RestFull.
+
+
+## FUNCIONALIDADES
+
+* Lista de contatos com e-mail
+* Gerencia seus contatos
+
+
+## FRAMEWORKS
+
+* gradle
+* springboot
+* springframework
+* aspectj
+* hibernate
+* jackson
+* junit
+* mockito
+* hamcrest
+* guava
+* logback
+
+
+## VERSÃO
+
+1.0.0
+
+
+## Como usar
+
+* Executar os comandos gradle
+```sh
+$ gradle clean bluid
+```
+
+* Executar o boot local
+```sh
+$ gradle bootRun
+```
+
+## LOG DA APLICAÇÃO
 * Criar o seguinte diretório:
     $-> sudo mkdir /var/log/contacts
 
@@ -8,7 +52,7 @@
 Para executar o docker com o mysql, utilizar os comandos abaixos:
 
 
-###################### IMAGEM MYSQL #####################
+## IMAGEM MYSQL
 LINK: https://hub.docker.com/_/mysql/
 
 * CRIA UM NOVO SERVIDOR DO MYSQL COM BD, USER E SENHA
@@ -20,7 +64,7 @@ LINK: https://hub.docker.com/_/mysql/
 * EXECUTA UM COMANDO DENTRO DO CONTAINER
 	$-> docker exec -i cit-mysql mysql --user=test --password=test
 
-********************** MYSQL **************************
+* MYSQL *
 * EXECUTAR OS SCRIPTS: contacts/contacts-repository/src/main/resources/sql
     $-> mysql --user=root --password=cit@2016 --port=3306 --host=0.0.0.0
 
@@ -36,7 +80,8 @@ LINK: https://hub.docker.com/_/mysql/
 * MYSQL SHOW TABLES
     $-> show tables;
 
-####################### IMAGEM REDIS ####################
+
+## IMAGEM REDIS 
 LINK: https://hub.docker.com/_/redis/
 
 * CRIA UM NOVO SERVIDOR DO REDIS
@@ -48,7 +93,23 @@ LINK: https://hub.docker.com/_/redis/
 * EXECUTA UM COMANDO DENTRO DO CONTAINER
 	$-> docker exec -i cit-redis redis-cli INFO
 
-	****************** REDIS ******************
+	* REDIS *
 	Dados para conectar no servidor redis:
 	    - host: 0.0.0.0
 	    - port: 6379
+	    
+	    
+## Contatos
+
+- *Nome:* Rafael Alessandro Batista de Souza
+- *E-mail:* rabsouza@gmail.com
+
+
+## License
+
+GNU GENERAL PUBLIC LICENSE
+
+
+
+
+*Free Source Code, Hell Yeah!*

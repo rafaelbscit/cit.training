@@ -1,6 +1,6 @@
 package br.com.cit.contacts.repository.exception;
 
-public class RepositoryException extends Exception {
+public class RepositoryException extends RuntimeException {
 
     public RepositoryException() {
     }

@@ -19,11 +19,13 @@ public class ContactValidation extends Validation<Contact> {
         List<Mail> mails = entity.getMails();
         boolean step2 = mails != null && !mails.isEmpty();
 
-        boolean step3 = true;
-        for (Mail mail : mails) {
-            if (Strings.isNullOrEmpty(mail.getMail())) {
-                step3 = false;
-                break;
+        boolean step3 = step2;
+        if (step3) {
+            for (Mail mail : mails) {
+                if (mail == null || Strings.isNullOrEmpty(mail.getMail())) {
+                    step3 = false;
+                    break;
+                }
             }
         }
 

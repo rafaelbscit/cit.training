@@ -1,7 +1,11 @@
 package br.com.cit.contacts.repository;
 
-import java.util.List;
-
+import br.com.cit.contacts.model.Contact;
+import br.com.cit.contacts.model.Mail;
+import br.com.cit.contacts.repository.exception.RepositoryException;
+import br.com.cit.contacts.repository.mapper.ContactMapper;
+import br.com.cit.contacts.repository.mapper.MailMapper;
+import br.com.cit.contacts.repository.util.MergeBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +15,9 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 
-import br.com.cit.contacts.model.Contact;
-import br.com.cit.contacts.model.Mail;
-import br.com.cit.contacts.repository.exception.RepositoryException;
-import br.com.cit.contacts.repository.mapper.ContactMapper;
-import br.com.cit.contacts.repository.mapper.MailMapper;
+import java.util.List;
 
-@CacheConfig(cacheNames = { "contacts:ContactRepository" })
+@CacheConfig(cacheNames = {"contacts:ContactRepository"})
 @Repository
 public class ContactRepository {
 
@@ -36,7 +36,7 @@ public class ContactRepository {
     }
 
     @Cacheable
-    public Contact findByName(String name) throws RepositoryException {
+    public List<Contact> findByName(String name) throws RepositoryException {
         LOGGER.info("Find contact by name [{}]!", name);
         return contactMapper.findByName(name);
     }
@@ -74,14 +74,25 @@ public class ContactRepository {
         try {
             LOGGER.info("Update contact [{}]!", contact);
             contact.updateEntity();
-            contactMapper.update(contact);
+
+            Contact contactFind = contactMapper.findById(contact.getId());
+            MergeBeanUtils.merge(contactFind, contact);
+            contactMapper.update(contactFind);
 
             if (contact.getMails() != null) {
                 for (Mail mail : contact.getMails()) {
 
                     mail.setContact(contact);
-                    mail.initEntity();
-                    mailMapper.insert(mail);
+                    if (mail.getId() != null) {
+                        mail.updateEntity();
+
+                        Mail mailFind = mailMapper.findById(mail.getId());
+                        MergeBeanUtils.merge(mailFind, mail);
+                        mailMapper.update(mailFind);
+                    } else {
+                        mail.initEntity();
+                        mailMapper.insert(mail);
+                    }
                 }
             }
 

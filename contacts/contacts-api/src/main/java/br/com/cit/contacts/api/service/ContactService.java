@@ -1,7 +1,10 @@
 package br.com.cit.contacts.api.service;
 
-import java.util.List;
-
+import br.com.cit.contacts.api.exception.ServiceException;
+import br.com.cit.contacts.api.service.validation.ContactValidation;
+import br.com.cit.contacts.model.Contact;
+import br.com.cit.contacts.repository.ContactRepository;
+import br.com.cit.contacts.repository.exception.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.cit.contacts.api.exception.ServiceException;
-import br.com.cit.contacts.api.service.validation.ContactValidation;
-import br.com.cit.contacts.model.Contact;
-import br.com.cit.contacts.repository.ContactRepository;
-import br.com.cit.contacts.repository.exception.RepositoryException;
+import java.util.List;
 
 @Service
 public class ContactService {
@@ -36,7 +35,7 @@ public class ContactService {
         }
     }
 
-    public Contact findByName(String name) throws ServiceException {
+    public List<Contact> findByName(String name) throws ServiceException {
         try {
             return contactRepository.findByName(name);
 
